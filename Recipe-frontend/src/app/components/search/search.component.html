@@ -5,8 +5,13 @@
            class="w-[250px] border-solid border-2 border-sky-800 text-center rounded-l-lg"   
            (keyup.enter)="doSearch(myinput.value)"  />
 
-    <button type="button" (click)="doSearch(myinput.value)" class="bg-pink-200 w-10 rounded-r-lg">
+    <button type="button" (click)="doSearch(myinput.value)" class="bg-buttonbg w-10 rounded-r-lg">
         <img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ml-2">
     </button>
+
+    <!-- 
+        more advanced search 
+        Där du ska kunna välja fler alternativ som ex gf, lf, veganskt, middag, utan ägg etc. med checkrutor
+    -->
 
 </div>
