@@ -1,0 +1,50 @@
+<div class="mt-4 bg-cardbg m-4 rounded-lg pb-2">
+    <div>
+        <div class="text-center text-xl pt-2 font-bold">
+            Register Here
+        </div>
+        <div class="m-4 p-2 rounded-lg bg-100">
+            <form [formGroup]="registrationsForm" (ngSubmit)="submitRegistration()">
+
+                <div class="form-group">
+                    <label for="name">Name</label><br>
+                    <input type="text" class="form-control" id="name" formControlName="name" required placeholder="Enter name"><br>
+                </div>
+                <div class="alert alert-danger" [hidden]="!error.name">
+                    {{ error.name }}
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Email</label><br>
+                  <input type="email" class="form-control" id="email" formControlName="email" required placeholder="Enter email"><br>
+                </div>
+                <div class="alert alert-danger" [hidden]="!error.email">
+                    {{ error.email }}
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password</label><br>
+                  <input type="password" class="form-control" id="password" formControlName="password" required placeholder="Password">
+                </div>
+                <div class="alert alert-danger" [hidden]="!error.password">
+                    {{ error.password }}
+                </div>
+
+                <div class="form-group">
+                    <label for="cpassword">Confirm Password</label><br>
+                    <input type="password" class="form-control" id="cpassword" formControlName="password_confirmation" required placeholder="Confirm Password">
+                  </div>
+                  <div class="alert alert-danger" [hidden]="!error.password_confirmation">
+                    {{ error.password_confirmation }}
+                </div>
+
+                <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
+                    <button type="submit" [disabled]="!registrationsForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
+                        Create account
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
