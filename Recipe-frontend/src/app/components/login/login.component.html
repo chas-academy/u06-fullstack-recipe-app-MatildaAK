@@ -1,0 +1,33 @@
+<div class="mt-4 bg-cardbg m-4 rounded-lg pb-2">
+    <div class="">
+        <div class="text-center text-xl pt-2 font-bold">
+            Login Here
+        </div>
+        <div class="m-4 p-2 rounded-lg bg-100">
+            <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
+                <div class="form-group">
+                  <label for="email">Email</label><br>
+                  <input type="email" class="form-control" id="email" formControlName="email" required placeholder="Enter email"><br>
+                </div>
+                <div class="form-group">
+                  <label for="password">Password</label><br>
+                  <input type="password" class="form-control" id="password" formControlName="password" required placeholder="Password">
+                </div>
+
+                <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
+                    <button type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
+                        Sign in
+                    </button>
+                </div>
+
+              </form>
+
+              <div class="flex items-center justify-end mt-10 mb-12 shadow-xl">
+                <a href="/register" class="block mt-1 w-full text-center bg-50 text-backgc font-inter font-bold rounded-md p-2 hover:bg-sky-400">
+                        Create your MyRecipe account
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
