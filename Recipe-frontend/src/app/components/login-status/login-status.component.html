@@ -1,1 +1,10 @@
-<p>login-status works!</p>
+@if(isAuthenticated && userName){
+    Welcome back {{ userName }}
+}
+
+@if(!isAuthenticated){
+    <a class="mr-2 border border-2 rounded-lg p-1 bg-200" routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a>
+}
+@if(isAuthenticated) {
+    <a (click)="logout()">Logout</a>
+}
