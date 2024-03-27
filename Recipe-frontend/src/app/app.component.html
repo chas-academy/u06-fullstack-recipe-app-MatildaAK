@@ -1,9 +1,13 @@
-<header>
-    <h1 class="text-center font-bold text-xl underline">{{title}}</h1>
-</header>
+<h1>Angular Router App</h1>
+<nav>
+  <ul>
+    <li><a routerLink="" routerLinkActive="active" ariaCurrentWhenActive="page">Search</a></li>
+    <li><a routerLink="/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login</a></li>
+    <li><a routerLink="/profile" routerLinkActive="active" ariaCurrentWhenActive="page">Profile</a></li>
+    @if((loggedIn$ | async)?.loginState ){
+      <li>Logged in as {{(loggedIn$ | async)?.user?.name}}</li>
+    } @else {<li>Not logged in</li>}
+  </ul>
+</nav>
 
-<app-search></app-search>
-
-<!-- <app-recipe-all></app-recipe-all> -->
-
-<router-outlet></router-outlet>
+<router-outlet />
