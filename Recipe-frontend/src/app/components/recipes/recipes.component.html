@@ -1,0 +1,19 @@
+<h2 class="text-center">Search for recipe or ingredients <br> <span class="text-xs">exampel:</span></h2>
+<div class="flex justify-center my-4">
+
+    <input type="text" [(ngModel)]="searchterm" class="w-[250px] border-solid border-2 border-sky-800 text-center rounded-l-lg" >
+
+    <button (click)="searchRecipe()" class="bg-buttonbg w-10 rounded-r-lg"><img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ml-2"></button>
+</div>
+
+<div class="grid grid-cols-auto gap-4 lg:grid-cols-8 mx-8">
+    @for(recipe of recipes; track recipe){
+        <article class="bg-200">
+
+                <h3 class="font-bold">{{recipe.label}}</h3>
+                <img src="{{recipe.image}}"  class="mx-3 w-full"/>
+                <p class="text-center border border-2 bg-buttonbg rounded-lg w-28 bottom-0 ml-6"><a [routerLink]="['/recipe', recipe.selfref | recipeidformatter]">Go to recipe</a></p>
+
+        </article>
+    } @empty {<p>search to get recipes</p>}
+</div>
