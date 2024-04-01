@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { SearchComponent } from './components/search/search.component';
-import { RecipeAboutComponent } from './components/recipe-about/recipe-about.component';
-import { RecipeAllComponent } from './components/recipe-all/recipe-all.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
@@ -11,12 +9,16 @@ import { AuthService } from './services/auth.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { LoggedInUser } from './interfaces/loggedinuser';
+import { RecipeComponent } from './components/recipe/recipe.component';
+import { RecipesComponent } from './components/recipes/recipes.component';
+import { LoginComponent } from './components/login/login.component';
+import { ModalService } from './services/modal.service';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SearchComponent, RecipeAboutComponent, RecipeAllComponent, RouterLink, RouterLinkActive, HttpClientModule, ReactiveFormsModule, LoginStatusComponent, AsyncPipe],
+  imports: [RouterOutlet, SearchComponent, RecipeComponent, RecipesComponent, RouterLink, RouterLinkActive, HttpClientModule, ReactiveFormsModule, LoginStatusComponent, AsyncPipe, LoginComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -28,6 +30,8 @@ export class AppComponent implements OnInit{
 
   storage: Storage = localStorage;
 
+  dropdownVisible: boolean = false;
+
   ngOnInit(): void {
     // Check authentication state on component initialization
     this.checkAuthentication();
@@ -35,7 +39,7 @@ export class AppComponent implements OnInit{
 
   loggedIn$: Observable<LoggedInUser>;
   
-  constructor(private http: HttpClient, private auth:AuthService) {
+  constructor(private http: HttpClient, private auth:AuthService, public modalService: ModalService) {
     this.loggedIn$ = this.auth.loggedIn$;
    }
 
@@ -69,4 +73,9 @@ export class AppComponent implements OnInit{
     this.isAuthenticated = false;
     this.userName = '';
   }
+
+  openModal(){
+    this.modalService.openModal();
+  }
+
 }
