@@ -43,4 +43,8 @@ export class AppComponent implements OnInit{
     dropdown?.classList.toggle("hidden");
   }
 
+  logOut(){
+    this.auth.logOut();
+  }
+
 }

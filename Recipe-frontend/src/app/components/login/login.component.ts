@@ -43,14 +43,11 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  
   login(){
     this.auth.loginUser(this.loginDetails);
   }
 
-  logout(){
-    this.auth.logOut();
-  }
-  
   handleError(error:any){
     this.error = error?.error?.errors || {};
   }
