@@ -9,6 +9,10 @@ import { LoginDetails } from '../interfaces/login-details';
 import { User } from '../interfaces/user';
 import { LoggedInUser } from '../interfaces/loggedinuser';
 
+interface ResultData {
+  token: string
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -29,12 +33,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  updateLoginState(loginState: LoggedInUser) {
-    this.loggedIn.next(loginState);
-  }
+
   getLoginStatus() {
     return this.loggedIn.value.loginState;
   }
+
+  private updateLoginState(loginState: LoggedInUser) {
+    this.loggedIn.next(loginState);
+  }
+
   loginUser(loginDetails: LoginDetails) {
     this.http
       .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
@@ -51,14 +58,29 @@ export class AuthService {
         );
       });
   }
-  logoutUser() {}
+  
+  logOut() {
+    this.http
+    .post<any>(this.baseUrl + 'logout', {}, this.httpOptions)
+    .pipe(catchError(this.handleError))
+    .subscribe((result) => {
+      console.log(result);
+      this.updateLoginState({
+        user: result.user,
+        loginState: false,
+      });
+      this.httpOptions.headers = this.httpOptions.headers.set(
+        'Authorization',
+        'Bearer ');
+    });
+  }
+  
   getCurrentUser() {
     let user: User;
     user = {
       id: 0,
       name: '',
       email: '',
-      created_at: '',
     };
     this.http
       .get<User[]>(
