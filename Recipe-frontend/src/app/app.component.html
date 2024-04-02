@@ -33,7 +33,7 @@
         </div>
       </div>
 
-      <div id="modal" class="flex justify-center items-center h-screen z-50" [class.hidden]="!(modalService.modalOpen$ | async)">
+      <div id="modal" class="flex justify-center items-center" [class.hidden]="!(modalService.modalOpen$ | async)">
 
         <app-login></app-login>
 
