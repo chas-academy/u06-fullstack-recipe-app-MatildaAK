@@ -3,6 +3,8 @@ import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { ModalService } from '../../services/modal.service';
+import { AuthService } from '../../services/auth.service';
+import { LoginDetails } from '../../interfaces/login-details';
 
 @Component({
   selector: 'app-login',
@@ -12,28 +14,25 @@ import { ModalService } from '../../services/modal.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
+
+  loginDetails: LoginDetails;
+
   loginForm = new FormGroup({
     email: new FormControl(''),
     password: new FormControl('')
   });
 
-  constructor(private backend:BackendService, private router:Router, private modalService: ModalService){}
+  constructor(private backend:BackendService, private router:Router, private modalService: ModalService, private auth: AuthService){
+    this.loginDetails = {
+      email: 'seb@seb.seb',
+      password: 'sebsebseb',
+    };
+  }
   
   public error:any= [];
 
   ngOnInit(): void {}
-
-  // close(){
-  //   document.addEventListener(DOM)
-  //   let closeBtn = document.getElementById('close');
-  //   let modal = document.getElementById('modal');
-
-  //   closeBtn?.addEventListener('click', ()=> {
-  //     this.modal.classList.add('hidden');
-  //   })
-  // }
  
-
   submitLogin() {
     return this.backend.login(this.loginForm.value).subscribe(
       data=>{
@@ -44,6 +43,14 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+  login(){
+    this.auth.loginUser(this.loginDetails);
+  }
+
+  logout(){
+    this.auth.logOut();
+  }
+  
   handleError(error:any){
     this.error = error?.error?.errors || {};
   }

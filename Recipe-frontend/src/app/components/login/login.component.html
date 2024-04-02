@@ -20,7 +20,7 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
-                    <button (click)="closeModal()" type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
+                    <button (click)="closeModal(); login();" type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
                         Sign in
                     </button>
                 </div>
