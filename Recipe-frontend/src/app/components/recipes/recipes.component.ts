@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Recipe } from '../../interfaces/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { RecipeidformatterPipe } from "../../pipes/recipeidformatter.pipe";
 
 @Component({
@@ -17,7 +17,7 @@ export class RecipesComponent {
 
   searchterm = 'Chicken';
 
-  constructor(private recipeService: RecipeService) {}
+  constructor(private recipeService: RecipeService, private router: Router) {}
 
   searchRecipe() {
     this.recipeService.getRecipes(this.searchterm).subscribe((result) => {
