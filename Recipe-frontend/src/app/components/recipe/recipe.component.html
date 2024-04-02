@@ -1,3 +1,19 @@
 <p>recipe works!</p>
 
 <p>{{id}}</p>
+
+
+@if(recipe){
+
+    <h2>{{ recipe.label }}</h2>
+    <img [src]="recipe.image" alt="{{ recipe.image }}" />
+    <p>Total Time: {{ recipe.totalTime }}</p>
+    <h3>Ingredients</h3>
+    <ul>
+        @for (ingredientLine of recipe.ingredientLines; track ingredientLine) {
+        <li>{{ingredientLine}}</li>
+        }
+    </ul>
+} @else {
+    <p>Could not find recipe</p>
+}
