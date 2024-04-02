@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,17 @@ export class RecipeService {
   }
 
   getRecipe(id: string){
+    return this.getRecipes("searchterm", "quisineType", "mealType").pipe(map((recipes: any[]) => {
 
+        let recipe = recipes.find((recipe: { id: string; }) => recipe.id === id);
+        if (recipe) {
+
+          return recipe;
+        } else {
+
+          throw new Error("Recipe not found with ID: " + id);
+        }
+      })
+    );
   }
 }
