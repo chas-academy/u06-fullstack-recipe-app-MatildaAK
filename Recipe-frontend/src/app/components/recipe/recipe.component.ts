@@ -15,13 +15,14 @@ export class RecipeComponent implements OnInit {
 
   recipe: Recipe | undefined;
 
+
+
   constructor(private route: ActivatedRoute, private recipeService: RecipeService){}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = String(params.get('id'));
       if (this.id) {
-        // Assuming you have a method in RecipeService to get recipe by ID
         this.recipeService.getRecipe(this.id).subscribe((recipe: Recipe | undefined) => {
           if(recipe){
             this.recipe = recipe;
@@ -33,6 +34,7 @@ export class RecipeComponent implements OnInit {
       }
     });
   }
+
 
   
 }
