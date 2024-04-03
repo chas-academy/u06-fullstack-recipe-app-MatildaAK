@@ -1,19 +1,30 @@
-<p>recipe works!</p>
 
-<p>{{id}}</p>
+    @if(recipe){
+        <div class="flex flex-col md:justify-center md:w-full bg-white rounded-lg m-4">
+            <div class="md:w-1/2">
+
+                <h2 class="text-center text-xs font-bold my-4 md:text-xl">
+                    {{recipe.recipe.label}}
+                </h2>
 
 
-@if(recipe){
+                    <p class="text-xs text-center md:text-base">Total Time: {{ recipe.recipe.totalTime }}</p>
+                    <h3 class="text-xs font-bold my-2 text-center md:text-xl">Ingredients:</h3>
+                    <ul>
+                        @for (ingredientLine of recipe.recipe.ingredientLines; track ingredientLine) {
+                        <li class="text-xs mx-4 md:text-xl bg-yellow/50 mb-2 rounded-lg h-8 flex items-center" >{{ingredientLine}}</li>
+                        }
+                    </ul>
 
-    <h2>{{ recipe.label }}</h2>
-    <img [src]="recipe.image" alt="{{ recipe.image }}" />
-    <p>Total Time: {{ recipe.totalTime }}</p>
-    <h3>Ingredients</h3>
-    <ul>
-        @for (ingredientLine of recipe.ingredientLines; track ingredientLine) {
-        <li>{{ingredientLine}}</li>
-        }
-    </ul>
-} @else {
-    <p>Could not find recipe</p>
-}
+            </div>
+
+
+            <img [src]="recipe.recipe.image" alt="recipe image" class="mt-6 md:w-1/2 rounded-lg h-[250px] md:rounded-r-lg md:h-[400px]" />
+        </div>
+
+
+    } @else {
+        <p>Could not find recipe</p>
+    }
+
+

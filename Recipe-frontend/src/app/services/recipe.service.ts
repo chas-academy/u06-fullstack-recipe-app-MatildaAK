@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -26,18 +26,10 @@ export class RecipeService {
     return this.http.get<any>(url, this.httpOptions);
   }
 
-  getRecipe(id: string){
-    return this.getRecipes("searchterm", "quisineType", "mealType").pipe(map((recipes: any[]) => {
-
-        let recipe = recipes.find((recipe: { id: string; }) => recipe.id === id);
-        if (recipe) {
-
-          return recipe;
-        } else {
-
-          throw new Error("Recipe not found with ID: " + id);
-        }
-      })
-    );
+  getRecipe(id: string): Observable<any>{
+    let recipeUrl = `https://api.edamam.com/api/recipes/v2/`;
+    let url = `${recipeUrl}${id}?type=public&app_id=${this.app_id}&app_key=${this.app_key}`;
+    return this.http.get<any>(url, this.httpOptions);
   }
+
 }
