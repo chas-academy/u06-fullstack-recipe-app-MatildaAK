@@ -4,14 +4,11 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { LoginDetails } from '../interfaces/login-details';
 import { User } from '../interfaces/user';
 import { LoggedInUser } from '../interfaces/loggedinuser';
 
-interface ResultData {
-  token: string
-}
 
 @Injectable({
   providedIn: 'root',
@@ -42,21 +39,23 @@ export class AuthService {
     this.loggedIn.next(loginState);
   }
 
-  loginUser(loginDetails: LoginDetails) {
-    this.http
+  loginUser(loginDetails: LoginDetails): Observable<any> {
+    return this.http
       .post<any>(this.baseUrl + 'login', loginDetails, this.httpOptions)
-      .pipe(catchError(this.handleError))
-      .subscribe((result) => {
-        console.log(result);
-        this.updateLoginState({
-          user: result.user,
-          loginState: true,
-        });
-        this.httpOptions.headers = this.httpOptions.headers.set(
-          'Authorization',
-          'Bearer ' + result.token
-        );
-      });
+      .pipe(
+        catchError(this.handleError),
+        tap((result) => {
+          console.log(result);
+          this.updateLoginState({
+            user: result.user,
+            loginState: true,
+          });
+          this.httpOptions.headers = this.httpOptions.headers.set(
+            'Authorization',
+            'Bearer ' + result.token
+          );
+        })
+      );
   }
   
   logOut() {
@@ -84,7 +83,7 @@ export class AuthService {
     };
     this.http
       .get<User[]>(
-        this.baseUrl + 'getUser/' + this.loggedIn.value.user?.id,
+        this.baseUrl + 'getuser' + this.loggedIn.value.user?.id,
         this.httpOptions
       )
       .subscribe((res) => (user = res[0]));
