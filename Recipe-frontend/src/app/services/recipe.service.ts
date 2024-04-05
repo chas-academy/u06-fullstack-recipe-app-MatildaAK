@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, map, of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { Filter } from '../interfaces/filter';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +21,27 @@ export class RecipeService {
 
   constructor(private http: HttpClient) { }
 
-  getRecipes(searchterm = "chicken", quisineType = "British", mealType = "Dinner"): Observable<any>{
 
-    let url = this.baseUrl + "&q=" + searchterm + "&app_id=" + this.app_id + "&app_key=" + this.app_key + "&quisine_type=" + quisineType + "&meal_type=" + mealType;
-    return this.http.get<any>(url, this.httpOptions);
+  getRecipes(filter: Filter): Observable<any> {
+    let url = `${this.baseUrl}&app_id=${this.app_id}&app_key=${this.app_key}`
+    if(filter.query){
+      url += `&q=${filter.query}`
+    }
+    if(filter.health){
+      url += `&health=${filter.health}`
+    }
+    if(filter.cuisineTypes){
+      url += `&quisine_type=${filter.cuisineTypes}`
+    }
+    if(filter.mealTypes){
+      url += `&meal_type=${filter.mealTypes}`
+    }
+    if(filter.dishType){
+      url += `&dishType=${filter.dishType}`
+    }
+    url = encodeURI(url);
+    return this.http.get(url, this.httpOptions);
+    
   }
 
   getRecipe(id: string): Observable<any>{
