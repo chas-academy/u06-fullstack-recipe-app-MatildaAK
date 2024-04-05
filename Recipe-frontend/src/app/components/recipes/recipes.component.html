@@ -1,21 +1,42 @@
 <h2 class="text-center mt-8">Search for recipe or ingredients <br> <span class="text-xs">exampel:</span></h2>
 <div class="flex justify-center my-4">
+        <input type="text" [(ngModel)]="filter.query" placeholder="Search for food" class="w-[250px] border-solid border-2 border-sky-800 text-center rounded-l-lg" >
 
-    <input type="text" [(ngModel)]="searchterm" class="w-[250px] border-solid border-2 border-sky-800 text-center rounded-l-lg" >
+         <select name="dishType" [(ngModel)]="filter.dishType" class="mx-4">
+            <option value="">Type of dish</option>
+            <option value="Desserts">Desserts</option>
+            <option value="Bread">Bread</option>
+            <option value="Salad">Salad</option>
+            <option value="Side_Dish">Side dishes</option>
+            <option value="Starter">Starter</option>
+            <option value="Soup">Soup</option>
+        </select>
 
-    <button type="button" (click)="searchRecipe()" class="bg-buttonbg w-10 rounded-r-lg"><img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ml-2"></button>
+        <select name="health" [(ngModel)]="filter.health" >
+            <option value="">Alergies</option>
+            <option value="dairy-free">Lactose free</option>
+            <option value="egg-free">Egg free</option>
+            <option value="fish-free">Fish free</option>
+            <option value="peanut-free">Peanut free</option>
+            <option value="wheat-free">Gluten free</option>
+            <option value="vegan">Vegan</option>
+            <option value="vegetarian">Vegetarian</option>
+        </select>
+
+        <button type="button" (click)="searchRecipe()" class="bg-buttonbg w-10 rounded-r-lg"><img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ml-2"></button>
+
 </div>
 
 <div class="grid grid-cols-auto gap-4 lg:grid-cols-8 mx-8 mb-12">
     @for(recipe of recipes; track recipe){
         <article class="bg-200">
                 <h3 class="font-bold text-center h-12">{{recipe.label}}</h3>
-                <img src="{{recipe.image}}"  class="h-[200px] px-2 w-full"/>
+                <img src="{{recipe.image}}" alt="recipe image"  class="h-[200px] px-2 w-full"/>
                 <div class="flex justify-center">
                     <div class="relative">
                         <p class="text-center border border-2 bg-buttonbg rounded-lg w-28 mt-4 mb-2 cursor-pointer z-20"><a [routerLink]="['/recipe', recipe.selfref | recipeidformatter]">Go to recipe</a></p>
                     </div>
                 </div>
         </article>
-    } @empty {<p class="text-center lg:col-start-3 lg:col-span-4">search to get recipes</p>}
+    }
 </div>
