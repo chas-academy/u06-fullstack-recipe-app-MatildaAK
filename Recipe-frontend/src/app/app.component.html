@@ -1,5 +1,10 @@
 <h1 class="text-center font-bold mt-4 h-20"><a routerLink="" routerLinkActive="active">MyRecipe</a></h1>
 <nav>
+  <ul class="flex fixed top-0 left-0 z-10">
+    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="" routerLinkActive="active">Home</a></li>
+    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="/recipes" routerLinkActive="active">Search recipes</a></li>
+    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="/#" routerLinkActive="active">About</a></li>
+  </ul>
 
   @if((loggedIn$ | async)?.loginState ){
     <div class="fixed flex top-0 right-0 z-10">
