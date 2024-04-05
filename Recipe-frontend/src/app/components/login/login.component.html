@@ -9,7 +9,7 @@
             Login Here
         </div>
         <div class="m-4 p-2 rounded-lg bg-100">
-            <form [formGroup]="loginForm">
+            <form name="loginform" [formGroup]="loginForm">
                 <div class="form-group">
                   <label for="email">Email</label><br>
                   <input type="email" class="form-control" id="email" formControlName="email" required placeholder="Enter email"><br>

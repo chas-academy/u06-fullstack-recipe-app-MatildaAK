@@ -4,7 +4,7 @@
             Register Here
         </div>
         <div class="m-4 p-2 rounded-lg bg-100">
-            <form [formGroup]="registrationsForm" (ngSubmit)="submitRegistration()">
+            <form name="registrationsform" [formGroup]="registrationsForm" (ngSubmit)="submitRegistration()">
 
                 <div class="form-group">
                     <label for="name">Name</label><br>
