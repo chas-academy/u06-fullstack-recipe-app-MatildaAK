@@ -13,7 +13,6 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { LoginComponent } from './components/login/login.component';
 import { ModalService } from './services/modal.service';
 import { ProfileComponent } from './components/profile/profile.component';
-import { LoginDetails } from './interfaces/login-details';
 
 
 @Component({
