@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
-import { ModalService } from '../../services/modal.service';
 import { AuthService } from '../../services/auth.service';
 import { LoginDetails } from '../../interfaces/login-details';
 
@@ -23,7 +22,7 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private backend:BackendService, private router:Router, private modalService: ModalService, private auth: AuthService, private formbuilder:FormBuilder){
+  constructor(private backend:BackendService, private router:Router, private auth: AuthService, private formbuilder:FormBuilder){
 
     this.loginForm.setValue({
       email: this.loginForm.get('email')!.value,
@@ -69,7 +68,4 @@ export class LoginComponent implements OnInit {
     this.error = error?.error?.errors || {};
   }
 
-  closeModal() {
-   this.modalService.closeModal();
-  }
 }
