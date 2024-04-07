@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LoginDetails } from '../../interfaces/login-details';
@@ -22,7 +21,7 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private backend:BackendService, private router:Router, private auth: AuthService, private formbuilder:FormBuilder){
+  constructor(private router:Router, private auth: AuthService, private formbuilder:FormBuilder){
 
     this.loginForm.setValue({
       email: this.loginForm.get('email')!.value,
