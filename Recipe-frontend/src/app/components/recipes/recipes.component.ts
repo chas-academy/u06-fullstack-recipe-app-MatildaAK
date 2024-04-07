@@ -22,19 +22,13 @@ export class RecipesComponent implements OnInit {
     mealTypes: '',
     health: '',
     cuisineTypes: '',
-    dishType: ''
+    dishType: '',
+    diet: ''
   }
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) {}
 
   ngOnInit(): void{
-    this.route.url.subscribe(url => {  
-      console.log(url);
-      console.log(url[0]);   
-        if (url[0] !== undefined && url[0].path === 'recipes') {
-          this.searchRecipe();
-        }
-    })
   }
 
   searchRecipe() {
