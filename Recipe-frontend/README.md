@@ -118,6 +118,7 @@ login.component.ts:
 
 -----
 
+![login component html](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/294832dc-7e6a-47c5-b8fb-301603578ea9)
 
 -------------------------------------------
 
