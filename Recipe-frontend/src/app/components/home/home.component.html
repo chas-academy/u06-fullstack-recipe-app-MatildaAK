@@ -1,20 +1,21 @@
 
 <!-- <app-recipes></app-recipes> -->
+<div class="h-screen">
+    <section >
+        <h2 class="ml-28 font-bold text-xl mt-24">Tips for {{filter.dishType}}</h2>
 
-<section >
-    <h2 class="ml-28 font-bold text-xl mt-24">Tips for {{filter.dishType}}</h2>
-
-    <div class="mx-8 mb-12 mt-8 grid grid-cols-auto gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8">
-        @for(recipe of recipes; track recipe){
-            <article class="bg-200">
-                    <h3 class="font-bold text-center h-12">{{recipe.label}}</h3>
-                    <img src="{{recipe.image}}" alt="recipe image" class="h-[200px] px-2 w-full"/>
-                    <div class="flex justify-center">
-                        <div class="relative">
-                            <p class="text-center border border-2 bg-buttonbg rounded-lg w-28 mt-4 mb-2 cursor-pointer z-20"><a [routerLink]="['/recipe', recipe.selfref | recipeidformatter]">Go to recipe</a></p>
+        <div class="mx-8 mb-12 mt-8 grid grid-cols-auto gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8">
+            @for(recipe of recipes; track recipe){
+                <article class="bg-cardbg">
+                        <h3 class="font-bold text-center h-12">{{recipe.label}}</h3>
+                        <img src="{{recipe.image}}" alt="recipe image" class="h-[200px] px-2 w-full"/>
+                        <div class="flex justify-center">
+                            <div class="relative">
+                                <p class="text-center border border-2 bg-buttonbg rounded-lg w-28 mt-4 mb-2 cursor-pointer z-20"><a [routerLink]="['/recipe', recipe.selfref | recipeidformatter]">Go to recipe</a></p>
+                            </div>
                         </div>
-                    </div>
-            </article>
-        }
-    </div>
-</section>
+                </article>
+            }
+        </div>
+    </section>
+</div>

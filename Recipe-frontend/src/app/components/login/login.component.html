@@ -1,34 +1,37 @@
-<div class="flex justify-center">
-    <div class="bg-cardbg rounded-lg pb-2 mt-24 mx-6 sm:w-[500px]">
+<div class="h-screen">
+    <div class="flex justify-center">
+        <div class="bg-cardbg rounded-lg mt-32 mx-6 w-full sm:w-[500px]">
 
-        <div class="text-center text-xl pt-2 font-bold">
-            Login Here
-        </div>
-        <div class="m-4 p-2 rounded-lg bg-100">
-            <form name="loginform" [formGroup]="loginForm">
-                <div class="form-group">
-                  <label for="email">Email</label><br>
-                  <input type="email" class="form-control" id="email" formControlName="email" required placeholder="Enter email"><br>
-                </div>
-                <div class="form-group">
-                  <label for="password">Password</label><br>
-                  <input type="password" class="form-control" id="password" formControlName="password" required placeholder="Password">
-                </div>
+            <div class="text-center text-xl pt-2 font-bold">
+                Login Here
+            </div>
+            <div class="m-4 p-2 rounded-lg bg-main">
+                <form name="loginform" [formGroup]="loginForm">
+                    <div class="form-group">
+                      <label for="email">Email</label><br>
+                      <input type="email" class="form-control w-full p-3" id="email" formControlName="email" required placeholder="Enter email"><br>
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label><br>
+                      <input type="password" class="form-control  w-full p-3" id="password" formControlName="password" required placeholder="Password">
+                    </div>
 
-                <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
-                    <button (click)="login(); submitLogin();" type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
-                        Sign in
-                    </button>
-                </div>
+                    <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
+                        <button (click)="login(); submitLogin();" type="submit" [disabled]="!loginForm.valid" class="cursor-pointer block mt-1 w-full text-white text-center bg-loginBtn text-50 font-medium rounded-md p-2 hover:text-black hover:bg-loginBtn/80">
+                            Sign in
+                        </button>
+                    </div>
 
-              </form>
+                  </form>
 
-              <div class="text-center mt-10 mb-12 shadow-xl bg-600/50 rounded-lg py-1">
-                <div class="text-sm font-medium text-grayD">
-                    Not registered? <a href="register" class="text-blue hover:underline ">Create account</a>
+                  <div class="text-center mt-10 mb-12 shadow-xl bg-loginBtn/50 rounded-lg py-1">
+                    <div class="text-sm font-medium text-grayD">
+                        Not registered? <a href="register" class="text-blue hover:underline ">Create account</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
