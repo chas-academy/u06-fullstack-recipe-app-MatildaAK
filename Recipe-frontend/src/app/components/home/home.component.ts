@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit{
   constructor(private recipeService: RecipeService, private router: Router){}
 
   ngOnInit(): void {
-    // this.mealType(); 
+    this.mealType(); 
   }
 
   mealType() {
