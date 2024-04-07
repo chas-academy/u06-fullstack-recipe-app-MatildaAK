@@ -3,5 +3,6 @@ export interface Filter {
     cuisineTypes: string,
     mealTypes: string,
     dishType: string,
-    query: string
+    query: string,
+    diet: string
 }

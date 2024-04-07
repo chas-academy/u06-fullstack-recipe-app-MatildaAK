@@ -39,6 +39,9 @@ export class RecipeService {
     if(filter.dishType){
       url += `&dishType=${filter.dishType}`
     }
+    if(filter.diet){
+      url += `&diet=${filter.diet}`
+    }
     url = encodeURI(url);
     return this.http.get(url, this.httpOptions);
     

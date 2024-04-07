@@ -23,7 +23,8 @@ export class HomeComponent implements OnInit{
     mealTypes: '',
     health: '',
     cuisineTypes: '',
-    dishType: 'Desserts'
+    dishType: 'Desserts',
+    diet: ''
   }
 
   constructor(private recipeService: RecipeService, private router: Router){}
