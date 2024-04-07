@@ -33,7 +33,6 @@ export class RecipesComponent implements OnInit {
 
   searchRecipe() {
     this.recipeService.getRecipes(this.filter).subscribe((result) => {
-      console.log(result);
       let recipes: Recipe[];
       recipes = result.hits.map((item: { recipe: { label: any; image: any; ingredientLines: any; totalTime: any; }; _links: { self: { href: any; }; }; }) => {
         return {
@@ -44,7 +43,6 @@ export class RecipesComponent implements OnInit {
           selfref: item._links.self.href,
         };
       });
-      console.table(recipes);
       this.recipes = recipes;
     });
   }
