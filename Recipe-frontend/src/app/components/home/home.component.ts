@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RecipeService } from '../../services/recipe.service';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { RecipesComponent } from '../recipes/recipes.component';
 import { Recipe } from '../../interfaces/recipe';
 import { RecipeidformatterPipe } from '../../pipes/recipeidformatter.pipe';
@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit{
     diet: ''
   }
 
-  constructor(private recipeService: RecipeService, private router: Router){}
+  constructor(private recipeService: RecipeService){}
 
   ngOnInit(): void {
     this.mealType(); 
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit{
 
   mealType() {
     this.recipeService.getRecipes(this.filter).subscribe((result) => {
-      console.log(result);
+
       let recipes: Recipe[];
       recipes = result.hits.map((item: { recipe: { label: any; image: any; ingredientLines: any; totalTime: any; }; _links: { self: { href: any; }; }; }) => {
         return {
@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit{
           selfref: item._links.self.href,
         };
       });
-      console.table(recipes);
       this.recipes = recipes;
     });
   }
