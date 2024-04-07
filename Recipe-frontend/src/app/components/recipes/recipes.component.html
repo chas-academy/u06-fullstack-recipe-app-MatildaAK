@@ -1,8 +1,8 @@
-<h2 class="text-center mt-8">Search for recipe or ingredients <br> <span class="text-xs">exampel:</span></h2>
-<div class="flex justify-center my-4">
-        <input type="text" [(ngModel)]="filter.query" placeholder="Search for food" class="w-[250px] border-solid border-2 border-sky-800 text-center rounded-l-lg" >
+<h2 class="text-center mt-16 sm:text-xl">Search for recipe or ingredients <br> <span class="text-xs sm:text-base">exampel:</span></h2>
+    <div class="grid grid-cols-auto my-4 mx-7 sm:grid-flow-col sm:grid-rows-2 gap-4">
+        <input type="text" [(ngModel)]="filter.query" placeholder="Chicken, Salmon" class="p-2 sm:col-span-3 sm:ml-20 border-solid border-2 text-center rounded-lg" >
 
-         <select name="dishType" [(ngModel)]="filter.dishType" class="mx-4">
+         <select name="dishType" [(ngModel)]="filter.dishType" class="cursor-pointer p-2 sm:ml-20 rounded-lg">
             <option value="">Type of dish</option>
             <option value="Desserts">Desserts</option>
             <option value="Bread">Bread</option>
@@ -12,7 +12,7 @@
             <option value="Soup">Soup</option>
         </select>
 
-        <select name="health" [(ngModel)]="filter.health" >
+        <select name="health" [(ngModel)]="filter.health" class="cursor-pointer p-2 rounded-lg" >
             <option value="">Allergies</option>
             <option value="dairy-free">Lactose free</option>
             <option value="egg-free">Egg free</option>
@@ -23,11 +23,22 @@
             <option value="vegetarian">Vegetarian</option>
         </select>
 
-        <button type="button" (click)="searchRecipe()" class="bg-buttonbg w-10 rounded-r-lg"><img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ml-2"></button>
+        <select name="diet" [(ngModel)]="filter.diet" class="cursor-pointer p-2 rounded-lg" >
+            <option value="">Diet</option>
+            <option value="high-fiber">High fiber</option>
+            <option value="high-protein">High protein</option>
+            <option value="low-carb">Low carb</option>
+            <option value="low-fat">Low fat</option>
+            <option value="balanced">Balanced</option>
+        </select>
+
+        <button type="button" (click)="searchRecipe()" class="bg-buttonbg md:w-20 rounded-lg sm:ml-2 p-2 flex justify-center items-center">
+            <img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ms:ml-2">
+        </button>
 
 </div>
 
-<div class="grid grid-cols-auto gap-4 lg:grid-cols-8 mx-8 mb-12">
+<div class="mx-8 mb-12 mt-8 grid grid-cols-auto gap-4 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8">
     @for(recipe of recipes; track recipe){
         <article class="bg-200">
                 <h3 class="font-bold text-center h-12">{{recipe.label}}</h3>
