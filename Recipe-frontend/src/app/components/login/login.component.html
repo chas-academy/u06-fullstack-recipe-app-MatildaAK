@@ -1,10 +1,6 @@
-<div id="modal" class="bg-cardbg rounded-lg pb-2">
-    <div class="z-50">
-        <div (click)="closeModal()" class="pl-2 pt-2">
-            <svg class="h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
-            </svg>
-        </div>
+<div class="flex justify-center">
+    <div class="bg-cardbg rounded-lg pb-2 mt-24 mx-6 sm:w-[500px]">
+
         <div class="text-center text-xl pt-2 font-bold">
             Login Here
         </div>
@@ -20,16 +16,16 @@
                 </div>
 
                 <div class="flex items-center justify-end mt-6 mb-10 shadow-xl">
-                    <button (click)="closeModal(); login(); submitLogin();" type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
+                    <button (click)="login(); submitLogin();" type="submit" [disabled]="!loginForm.valid" class="block mt-1 w-full text-center bg-600 text-50 font-inter font-medium rounded-md p-2 hover:bg-sky-400">
                         Sign in
                     </button>
                 </div>
 
               </form>
 
-              <div class="flex items-center justify-end mt-10 mb-12 shadow-xl">
-                <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
-                    Not registered? <a href="register" class="text-blue-700 hover:underline dark:text-blue-500">Create account</a>
+              <div class="text-center mt-10 mb-12 shadow-xl bg-600/50 rounded-lg py-1">
+                <div class="text-sm font-medium text-grayD">
+                    Not registered? <a href="register" class="text-blue hover:underline ">Create account</a>
                 </div>
             </div>
         </div>
