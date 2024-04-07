@@ -6,7 +6,7 @@
             @for(recipe of recipes; track recipe){
                 <a [routerLink]="['/recipe', recipe.selfref | recipeidformatter]">
                     <article class="bg-cardbg">
-                            <h3 class="font-bold text-center h-12">{{recipe.label}}</h3>
+                            <h3 class="font-bold text-center h-24">{{recipe.label}}</h3>
                             <img src="{{recipe.image}}" alt="recipe image" class="h-[200px] px-2 w-full"/>
                             <div class="flex justify-center">
                                 <div class="relative">
