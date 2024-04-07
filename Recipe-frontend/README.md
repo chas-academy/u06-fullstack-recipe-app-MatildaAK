@@ -3,6 +3,7 @@
     Via VSCode: öppna terminal -> gå in i rätt map (cd Recipe-frontend) -> ng serve -o
 
 ***Sidan är inte säker så när du skapar ny användare gör det med mail och lösenord som inte används någon annanstan eller har någon betydelse***
+
 ***Med andra ord använd en hittepå mail och lösenord***
 
 Sidor som finns: *Login*, *Registrera användare*, *Sök recept*, *Recept med mer info* och *Hem sida*
