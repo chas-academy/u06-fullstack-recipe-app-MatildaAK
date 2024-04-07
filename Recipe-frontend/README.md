@@ -78,27 +78,7 @@ export class ModalService {
 
 app.component.html:
 
-    <!-- <div id="modalDrop">
-
-      <div class=" fixed flex top-0 right-0">
-        <div class="relative">
-          <button (click)="openModal()" class="border border-2 rounded-lg mr-4 lg:mr-12 mt-4 p-1 flex bg-yellow" type="button" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-6 mr-1 mt-1 lg:mr-2" stroke="sky-600" fill="#082f49" viewBox="0 0 448 512"> -->
-              <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
-              <!-- <path  d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-            </svg>
-            Login
-          </button>
-        </div>
-      </div>
-
-      <div id="modal" class="flex justify-center items-center" [class.hidden]="!(modalService.modalOpen$ | async)">
-
-        <app-login></app-login>
-
-      </div>
-
-    </div> -->
+![app component html](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/9b769d8e-901a-4a8c-87ba-e7963a7ffe00)
 
 -----
 
@@ -108,6 +88,11 @@ app.component.ts:
     this.modalService.openModal();
   }
 
+-----
+login.component.html
+
+![login component html](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/294832dc-7e6a-47c5-b8fb-301603578ea9)
+
 ------
 
 login.component.ts:
@@ -115,10 +100,6 @@ login.component.ts:
   closeModal() {
    this.modalService.closeModal();
   }
-
------
-
-![login component html](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/294832dc-7e6a-47c5-b8fb-301603578ea9)
 
 -------------------------------------------
 
@@ -133,7 +114,7 @@ då den hämtade datan men då sidan blev uppdaterad i samma veva förlorade jag
 
 home.component.html:
 
-<!-- <app-recipes></app-recipes> -->
+![home c app-recipes](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/596faffe-f4c6-4550-a80e-7e833db9e10a)
 
 -----
 
@@ -151,9 +132,7 @@ recipes.component.ts:
 
 recipes.component.html:
 
-   <button [routerLink]="['/recipes']" type="button" (click)="searchRecipe()" class="bg-buttonbg w-10 rounded-lg ml-80 p-2">
-      <img src="../../assets/searchicon.svg" alt="search icon" class="h-6 ms:ml-2">
-    </button>
+![recipes component html](https://github.com/chas-academy/u06-fullstack-recipe-app-MatildaAK/assets/117752722/b4a5ea48-7723-4f5f-8d79-959f16e0f24d)
 
 -----
 
