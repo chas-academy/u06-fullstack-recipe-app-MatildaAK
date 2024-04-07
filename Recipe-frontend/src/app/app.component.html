@@ -1,10 +1,28 @@
-<h1 class="text-center font-bold mt-4 h-20"><a routerLink="" routerLinkActive="active">MyRecipe</a></h1>
+
 <nav>
-  <ul class="flex fixed top-0 left-0 z-10">
-    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="" routerLinkActive="active">Home</a></li>
-    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="/recipes" routerLinkActive="active">Search recipes</a></li>
-    <li class="mx-2 hover:bg-gray px-2 rounded-lg"><a routerLink="/#" routerLinkActive="active">About</a></li>
-  </ul>
+  <h1 class="font-bold mt-4 fixed flex top-0 sm:left-[50%] sm:right-[50%] sm:text-xl"><a routerLink="" routerLinkActive="active">MyRecipe</a></h1>
+  <div class="fixed flex top-0 left-0 z-10">
+
+    <div  class="relative" id="menuDropdown" class="sm:hidden">
+
+      <button type="button" (click)="menu()" class="border border-2 rounded-lg ml-4 mt-4 lg:ml-12 p-1 flex bg-yellow">Menu</button>
+      <div id="menu" class="absolute left-0 ml-4 w-40 md:ml-12 md:w-48 bg-50 rounded-md shadow-xl hidden">
+        <ul>
+          <li class="py-2 px-2"><a routerLink="" routerLinkActive="active" (click)="closeMenu()">Home</a></li>
+          <li class="py-2 px-2"><a routerLink="/recipes" routerLinkActive="active" (click)="closeMenu()">Search recipes</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="hidden sm:text-xl sm:flex">
+      <ul class="flex">
+        <li class="py-1 px-2 ml-4 mt-2 hover:bg-yellow hover:border-2 hover:font-bold rounded-lg"><a routerLink="" routerLinkActive="active">Home</a></li>
+        <li class="py-1 px-2 ml-4 mt-2 hover:bg-yellow hover:border-2 hover:font-bold rounded-lg"><a routerLink="/recipes" routerLinkActive="active">Search recipes</a></li>
+      </ul>
+    </div>
+
+  </div>
 
   @if((loggedIn$ | async)?.loginState ){
     <div class="fixed flex top-0 right-0 z-10">
@@ -17,33 +35,21 @@
         </button>
         <div id="dropdown" class="absolute right-0 mr-4 w-32 md:mr-12 md:w-48 bg-50 rounded-md shadow-xl hidden">
           <ul>
-            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" routerLink="/profile" routerLinkActive="active">Profile</a></li>
-            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" href="#">MyRecipe List</a></li>
-            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" (click)="logOut()" routerLink="">Logout</a></li>
+            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" routerLink="/profile" routerLinkActive="active" (click)="closeToggleDropdown()">Profile</a></li>
+            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" href="#" (click)="closeToggleDropdown()">MyRecipe List</a></li>
+            <li class="py-2 hover:bg-gray cursor-pointer"><a class="pl-1" (click)="logOut(); closeToggleDropdown();" routerLink="">Logout</a></li>
           </ul>
         </div>
       </div>
     </div>
   } @else {
-    <div>
-
-      <div class=" fixed flex top-0 right-0">
-        <div class="relative">
-          <button (click)="openModal()" class="border border-2 rounded-lg mr-4 lg:mr-12 mt-4 p-1 flex bg-yellow" type="button" aria-expanded="false">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-6 mr-1 mt-1 lg:mr-2" stroke="sky-600" fill="#082f49" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
-              <path  d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
-            </svg>
-            Login
-          </button>
-        </div>
-      </div>
-
-      <div id="modal" class="flex justify-center items-center" [class.hidden]="!(modalService.modalOpen$ | async)">
-
-        <app-login></app-login>
-
-      </div>
-
+    <div class=" fixed flex top-0 right-0">
+    <button class="border border-2 rounded-lg mr-4 lg:mr-12 mt-4 p-1 flex bg-yellow" type="button" aria-expanded="false" routerLink="/login" routerLinkActive="active">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-6 mr-1 mt-1 lg:mr-2" stroke="sky-600" fill="#082f49" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc. -->
+        <path  d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+      </svg>
+      Login
+    </button>
     </div>
   }
 
