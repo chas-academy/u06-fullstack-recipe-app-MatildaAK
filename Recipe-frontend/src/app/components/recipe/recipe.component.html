@@ -1,30 +1,29 @@
-
+<div class="h-screen">
     @if(recipe){
-        <div class="flex flex-col md:justify-center md:w-full bg-white rounded-lg m-4">
-            <div class="md:w-1/2">
+        <div class="grid grid-rows-2 grid-flow-col bg-white rounded-lg mt-12 mx-4 md:mx-32">
+            <img [src]="recipe.recipe.image" alt="recipe image" class="col-span-2 rounded-t-lg h-[300px] border-b-4 border-solid w-full md:rounded-l-lg md:rounded-r-none md:h-[500px] md:row-span-2 md:border-r-4 md:border-b-0" />
+
+            <div class="md:row-span-2">
 
                 <h2 class="text-center text-xs font-bold my-4 md:text-xl">
                     {{recipe.recipe.label}}
                 </h2>
 
-
-                    <p class="text-xs text-center md:text-base">Total Time: {{ recipe.recipe.totalTime }}</p>
-                    <h3 class="text-xs font-bold my-2 text-center md:text-xl">Ingredients:</h3>
+                    <p class="text-xs text-center md:text-xl md:font-bold">Total Time: {{ recipe.recipe.totalTime }}</p>
+                    <h3 class="text-xs font-bold my-4 text-center md:text-xl md:my-10">Ingredients:</h3>
                     <ul>
                         @for (ingredientLine of recipe.recipe.ingredientLines; track ingredientLine) {
-                        <li class="text-xs mx-4 md:text-xl bg-yellow/50 mb-2 rounded-lg h-8 flex items-center" >{{ingredientLine}}</li>
+                        <li class="text-xs font-bold mx-4 mb-2 rounded-lg h-8 flex items-center md:text-xl md:mb-6 md:mx-8 md:font-bold" >{{ingredientLine}}</li>
                         }
                     </ul>
 
             </div>
 
-
-            <img [src]="recipe.recipe.image" alt="recipe image" class="mt-6 md:w-1/2 rounded-lg h-[250px] md:rounded-r-lg md:h-[400px]" />
         </div>
-
-
     } @else {
         <p>Could not find recipe</p>
     }
+</div>
+
 
 
