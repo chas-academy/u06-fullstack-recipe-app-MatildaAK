@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { LoginDetails } from '../../interfaces/login-details';
@@ -11,7 +11,7 @@ import { LoginDetails } from '../../interfaces/login-details';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   loginDetails: LoginDetails;
 
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private router:Router, private auth: AuthService, private formbuilder:FormBuilder){
+  constructor(private router:Router, private auth: AuthService){
 
     this.loginForm.setValue({
       email: this.loginForm.get('email')!.value,
@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
   }
   
   public error:any= [];
-
-  ngOnInit(): void {}
  
   submitLogin() {
     if(this.loginForm.valid) {

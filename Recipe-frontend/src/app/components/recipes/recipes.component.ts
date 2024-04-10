@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Recipe } from '../../interfaces/recipe';
 import { RecipeService } from '../../services/recipe.service';
 import { FormsModule } from '@angular/forms';
@@ -14,7 +14,7 @@ import { Filter } from '../../interfaces/filter';
     styleUrl: './recipes.component.css',
     imports: [FormsModule, RouterLink, RecipeidformatterPipe, CommonModule]
 })
-export class RecipesComponent implements OnInit {
+export class RecipesComponent {
   recipes?: Recipe[];
 
   filter: Filter ={
@@ -27,9 +27,6 @@ export class RecipesComponent implements OnInit {
   }
 
   constructor(private recipeService: RecipeService, private route: ActivatedRoute) {}
-
-  ngOnInit(): void{
-  }
 
   searchRecipe() {
     this.recipeService.getRecipes(this.filter).subscribe((result) => {

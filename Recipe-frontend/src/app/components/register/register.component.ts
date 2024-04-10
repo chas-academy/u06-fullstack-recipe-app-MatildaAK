@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BackendService } from '../../services/backend.service';
 import { Router } from '@angular/router';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
   registrationsForm = new FormGroup({
     name: new FormControl(''),
@@ -24,7 +24,6 @@ export class RegisterComponent implements OnInit {
 
   public error:any= [];
 
-  ngOnInit(): void {}
 
   submitRegistration() {
     return this.backend.register(this.registrationsForm.value).subscribe(
