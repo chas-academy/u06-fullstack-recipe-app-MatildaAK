@@ -9,12 +9,9 @@ export class BackendService {
 
   constructor(private http:HttpClient) { }
 
+  // used in register.component.ts
   register(data:any){
     return this.http.post('https://u06-fullstack-recipe-app-matildaak.onrender.com/api/register', data);
-  }
-
-  login(data:any){
-    return this.http.post('https://u06-fullstack-recipe-app-matildaak.onrender.com/api/login', data);
   }
 
 }
